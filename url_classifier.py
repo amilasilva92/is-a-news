@@ -9,6 +9,9 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import precision_recall_fscore_support
 
+nltk.download('stopwords')
+nltk.download('punkt')
+
 class URL_Classifier:
     def __init__(self):
         self.negative_domains = []
