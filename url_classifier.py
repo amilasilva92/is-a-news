@@ -9,6 +9,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import precision_recall_fscore_support
 
+import nltk
 nltk.download('stopwords')
 nltk.download('punkt')
 
