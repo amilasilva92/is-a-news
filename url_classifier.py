@@ -8,6 +8,7 @@ from newspaper import Article
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import precision_recall_fscore_support
+import validators
 
 import nltk
 nltk.download('stopwords')
@@ -48,6 +49,10 @@ class URL_Classifier:
         return -1
 
     def classify_url(self, url):
+        valid=validators.url(url)
+        if valid != True:
+            return False
+            
         result = self.check_in_existing_domains(url)
         if result == 1:
             return True
