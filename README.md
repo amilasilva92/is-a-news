@@ -1,7 +1,7 @@
 # is-a-news
 This is a web application that automatically discover news URLs based on their content and a predefined URL database. The application is running at https://is-a-news.herokuapp.com/
 
-##### Instructions to Run as an Standalone Application
+##### Instructions to Run as a Standalone Application
 1. To install required libraries (Note: The code is written in python 3).
 ```shell=
 pip install -r requirements.txt
