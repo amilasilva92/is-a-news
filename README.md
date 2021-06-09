@@ -18,7 +18,5 @@ e.g., python run_example.py --url https://www.bbc.com/news/world-us-canada-57408
 Here we describe the optional arguments of the model:
 
 [--skip_crawling]
-
 What is it: Boolean value to inform the pipeline to skip the content-based label prediction step, which is the bottleneck of this pipeline. If you skip this step (by setting True for this argument), it could substantially reduce the processing time by relying just on the existing databases to make predictions.
-
 Default: False
