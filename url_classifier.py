@@ -48,30 +48,38 @@ class URL_Classifier:
                 return 1
         return -1
 
-    def classify_url(self, url):
+    def classify_url(self, url, skip_crawling= False):
+        # check whether the URL is a valid one or not
         valid=validators.url(url)
         if valid != True:
             return False
-            
+
+        # check whether the url is present in the existing database
         result = self.check_in_existing_domains(url)
         if result == 1:
             return True
         elif result == 0:
             return False
 
+        if skip_crawling:
+            return False
+            
         # print('url domain is not found')
+        # extract the content of the URL
         url_features = self.extract_url_features(url)
         if url_features is None:
             return False
 
+        # If the URL was shortened, check the original URL with the databases again
         result = self.check_in_existing_domains(url_features[-1])
         if result == 1:
             return True
         elif result == 0:
             return False
 
+        print('predicting using the classifier')
         predicted_label = self.classifier.predict(np.array(url_features[:-1]).reshape(1,-1))
-        return False
+        return bool(predicted_label[0])
 
     def train_classifier(self):
         # load features and labels
